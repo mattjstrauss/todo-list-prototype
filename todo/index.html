@@ -10,11 +10,9 @@
     
 
     <div id="appNew">
-    	
-    	<input v-model="message" @keydown.enter="keyPressed('Param message', $event)" type="text">
-
-    	<button @click="buttonPressed">Count {{counter}}</button>
-
+    	<h1 v-if="number === 1 && 2 > 1">H1: {{ header }}</h1>
+    	<h2 v-if="number === 2">H2: {{ header }}</h2>
+    	<h3 v-else>H3: {{ header }}</h3>
     </div>
 
     <script>
@@ -22,17 +20,8 @@
     	var appNew = new Vue({
     		el:  '#appNew',
     		data: {
-    			message: "Hello World",
-    			counter: 0
-    		},
-    		methods: {
-    			keyPressed: function(msg, event) {
-    				alert(msg);
-    				event.srcElement.style.background = "yellow";
-    			},
-    			buttonPressed: function() {
-    				this.counter += 1
-    			}
+    			header: "This is my header data",
+    			number: 1
     		}
     	});
 
