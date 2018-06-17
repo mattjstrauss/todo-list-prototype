@@ -5,46 +5,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>todo</title>
-    <style>
-    	section {
-    		width: 100px;
-    		height: 100px;
-    		border-radius: 5px;
-    	}
-    	.grey {
-    		background: #aaa;
-    	}
-    	.gray10 {
-    		background: #ccc;
-    	}
-    	.dark {
-    		background: #333;
-    	}
-    	.dark10 {
-    		background: #bf5549;
-    	}
-    </style>
   </head>
   <body>
     
 
     <div id="appNew">
     	
-    	<section v-bind:class=" [
-			colorScheme === 'dark' ? 'dark' : 'gray',
-			colorScheme,
-			colorScheme + (5 + 5),
-			'stdClass'
-    	]"></section>
+    	<input v-model="message" @keydown.enter="keyPressed('Param message', $event)" type="text">
+
+    	<button @click="buttonPressed">Count {{counter}}</button>
 
     </div>
 
     <script>
     	
     	var appNew = new Vue({
-    		el :  '#appNew',
-    		data : {
-    			colorScheme : 'dark'
+    		el:  '#appNew',
+    		data: {
+    			message: "Hello World",
+    			counter: 0
+    		},
+    		methods: {
+    			keyPressed: function(msg, event) {
+    				alert(msg);
+    				event.srcElement.style.background = "yellow";
+    			},
+    			buttonPressed: function() {
+    				this.counter += 1
+    			}
     		}
     	});
 
