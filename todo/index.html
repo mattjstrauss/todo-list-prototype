@@ -11,11 +11,9 @@
 
     <div id="appNew">
     	
-		<ul>
-			<li v-for=" (value, key, index) in todo" v-if="!value.completed">
-				{{index}} {{key}} {{value.title}}
-			</li>
-		</ul>
+		<p>{{ reuseComputed }}</p>
+
+		<p>Changed: {{ counter }}</p>
 
     </div>
 
@@ -24,19 +22,29 @@
     	var appNew = new Vue({
     		el:  '#appNew',
     		data: {
-    			todo: {
-    				"KeyTask0" :{
-    					completed: false,
-    					title: "Task One"
-    				},
-    				"KeyTask1" :{
-    					completed: true,
-    					title: "Task Two"
-    				},
-    				"KeyTask2" :{
-    					completed: false,
-    					title: "Task Three"
+    			message: "Hello World! message",
+    			counter: 0,
+    		},
+    		computed: {
+    			reversedMessage: function() {
+    				return this.message.split('').reverse().join('');
+    			},
+    			abbreviation: function() {
+    				var messageArray = this.message.split(' '),
+    					abbr = "";
+
+    				for( var word in messageArray ) {
+    					abbr += messageArray[word].charAt(0);
     				}
+    				return abbr.toUpperCase();
+    			},
+    			reuseComputed: function() {
+    				return this.message + " is abbreviated to..." + this.abbreviation;
+    			}
+    		},
+    		watch: {
+    			"reuseComputed": function() {
+    				this.counter += 1;
     			}
     		}
     	});
