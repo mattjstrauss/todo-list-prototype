@@ -3,10 +3,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>todo</title>
+    <style>
+    	section {
+    		width: 100px;
+    		height: 100px;
+    		border-radius: 5px;
+    	}
+    	.grey {
+    		background: #aaa;
+    	}
+    	.gray10 {
+    		background: #ccc;
+    	}
+    	.dark {
+    		background: #333;
+    	}
+    	.dark10 {
+    		background: #bf5549;
+    	}
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    
+
+    <div id="appNew">
+    	
+    	<section v-bind:class=" [
+			colorScheme === 'dark' ? 'dark' : 'gray',
+			colorScheme,
+			colorScheme + (5 + 5),
+			'stdClass'
+    	]"></section>
+
+    </div>
+
+    <script>
+    	
+    	var appNew = new Vue({
+    		el :  '#appNew',
+    		data : {
+    			colorScheme : 'dark'
+    		}
+    	});
+
+
+    </script>
   </body>
 </html>
