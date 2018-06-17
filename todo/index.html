@@ -10,9 +10,13 @@
     
 
     <div id="appNew">
-    	<h1 v-if="number === 1 && 2 > 1">H1: {{ header }}</h1>
-    	<h2 v-if="number === 2">H2: {{ header }}</h2>
-    	<h3 v-else>H3: {{ header }}</h3>
+    	
+		<ul>
+			<li v-for=" (value, key, index) in todo" v-if="!value.completed">
+				{{index}} {{key}} {{value.title}}
+			</li>
+		</ul>
+
     </div>
 
     <script>
@@ -20,8 +24,20 @@
     	var appNew = new Vue({
     		el:  '#appNew',
     		data: {
-    			header: "This is my header data",
-    			number: 1
+    			todo: {
+    				"KeyTask0" :{
+    					completed: false,
+    					title: "Task One"
+    				},
+    				"KeyTask1" :{
+    					completed: true,
+    					title: "Task Two"
+    				},
+    				"KeyTask2" :{
+    					completed: false,
+    					title: "Task Three"
+    				}
+    			}
     		}
     	});
 
