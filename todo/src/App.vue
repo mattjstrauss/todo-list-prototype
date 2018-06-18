@@ -1,19 +1,26 @@
 <template>
+  
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+
+    <nestedone message="This is message one..." :number="1"></nestedone>
+    <nestedone message="This is message two..."></nestedone>
+    <nestedone></nestedone>
+
   </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import  nestedone from './components/NestedOne';
+
+  export default {
+    name: 'app',
+    components: {
+      nestedone
+    }
   }
-}
+
 </script>
 
 <style>

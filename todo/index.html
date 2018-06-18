@@ -3,37 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>todo</title>
   </head>
   <body>
-    
-
-    <div id="appNew">
-    	
-		<p>{{ message | capitalized(false) }}</p>
-
-    </div>
-
-    <script>
-    	
-    	var appNew = new Vue({
-    		el:  '#appNew',
-    		data: {
-    			message: "HenLlo WoRld! meSSage",
-    		},
-    		filters: {
-    			capitalized: function(value, isCapitalized) {
-    				if ( isCapitalized === true ) {
-    					return value.toUpperCase();
-    				} else {
-    					return value.toLowerCase();
-    				}
-    			}
-    		}
-    	});
-
-
-    </script>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
   </body>
 </html>
