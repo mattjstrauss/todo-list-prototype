@@ -11,9 +11,7 @@
 
     <div id="appNew">
     	
-		<p>{{ reuseComputed }}</p>
-
-		<p>Changed: {{ counter }}</p>
+		<p>{{ message | capitalized(false) }}</p>
 
     </div>
 
@@ -22,29 +20,15 @@
     	var appNew = new Vue({
     		el:  '#appNew',
     		data: {
-    			message: "Hello World! message",
-    			counter: 0,
+    			message: "HenLlo WoRld! meSSage",
     		},
-    		computed: {
-    			reversedMessage: function() {
-    				return this.message.split('').reverse().join('');
-    			},
-    			abbreviation: function() {
-    				var messageArray = this.message.split(' '),
-    					abbr = "";
-
-    				for( var word in messageArray ) {
-    					abbr += messageArray[word].charAt(0);
+    		filters: {
+    			capitalized: function(value, isCapitalized) {
+    				if ( isCapitalized === true ) {
+    					return value.toUpperCase();
+    				} else {
+    					return value.toLowerCase();
     				}
-    				return abbr.toUpperCase();
-    			},
-    			reuseComputed: function() {
-    				return this.message + " is abbreviated to..." + this.abbreviation;
-    			}
-    		},
-    		watch: {
-    			"reuseComputed": function() {
-    				this.counter += 1;
     			}
     		}
     	});
