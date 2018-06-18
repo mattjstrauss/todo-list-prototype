@@ -2,8 +2,8 @@
 
 	<section>
 		
-		<h1>{{message}}</h1>
-		<button @click=" changeMessage('Bubble two event fired') ">Change Message</button>
+		<h1>{{name}}</h1>
+		<button @click=" $store.dispatch('changeName', 'Bubble twoclisdfsdfcked') ">Change Message</button>
 	</section>
 
 </template>
@@ -12,16 +12,9 @@
 	
 	export default {
 		name: 'NestedOne',
-		props: {
-			"message" : {
-				type: String,
-				required: false,
-				default: "Default string"
-			}
-		},
-		methods: {
-			changeMessage(message) {
-				this.$emit( 'BubbleTwo', message )
+		computed: {
+			name(){
+				return this.$store.state.firstName + ' ' + this.$store.state.lastName;
 			}
 		},
 	}

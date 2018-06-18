@@ -2,10 +2,10 @@
 
 	<section>
 		
-		<h1>{{message}}</h1>
-		<button @click=" changeMessage('Bubble one even fired') ">Change Message</button>
+		<h1>{{name}}</h1>
+		<button @click=" $store.dispatch('changeName', 'Bubble one') ">Change Message</button>
 
-		<nestedtwo :message="message" @BubbleTwo="changeMessage($event)"></nestedtwo>
+		<nestedtwo></nestedtwo>
 
 	</section>
 
@@ -17,21 +17,14 @@
 	
 	export default {
 		name: 'NestedOne',
-		props: {
-			"message" : {
-				type: String,
-				required: false,
-				default: "Default string"
+		computed: {
+			name(){
+				return this.$store.state.firstName + ' ' + this.$store.state.lastName;
 			}
 		},
 		components: {
 			nestedtwo
-		},
-		methods: {
-			changeMessage(message) {
-				this.$emit( 'BubbleOne', message )
-			}
-		},
+		}
 	}
 
 </script>

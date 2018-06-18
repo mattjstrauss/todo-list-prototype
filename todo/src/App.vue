@@ -2,9 +2,9 @@
 	
 	<div id="app">
 
-		<h1>{{AppMessage}}</h1>
+		<h1>{{name}}</h1>
 
-		<nestedone :message="AppMessage" @BubbleOne="AppMessage = $event"></nestedone>
+		<nestedone :message="name" @BubbleOne=" $store.dispatch( 'changeName', $event ) "></nestedone>
 
 	</div>
 
@@ -16,9 +16,9 @@
 
 	export default {
 		name: 'app',
-		data() {
-			return {
-				AppMessage: "App Message Here!"
+		computed: {
+			name(){
+				return this.$store.state.firstName + ' ' + this.$store.state.lastName;
 			}
 		},
 		components: {
