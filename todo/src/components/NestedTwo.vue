@@ -3,17 +3,12 @@
 	<section>
 		
 		<h1>{{message}}</h1>
-		<button @click=" changeMessage('Bubble one even fired') ">Change Message</button>
-
-		<nestedtwo :message="message" @BubbleTwo="changeMessage($event)"></nestedtwo>
-
+		<button @click=" changeMessage('Bubble two event fired') ">Change Message</button>
 	</section>
 
 </template>
 
 <script>
-
-	import  nestedtwo from './NestedTwo';
 	
 	export default {
 		name: 'NestedOne',
@@ -24,12 +19,9 @@
 				default: "Default string"
 			}
 		},
-		components: {
-			nestedtwo
-		},
 		methods: {
 			changeMessage(message) {
-				this.$emit( 'BubbleOne', message )
+				this.$emit( 'BubbleTwo', message )
 			}
 		},
 	}

@@ -1,35 +1,40 @@
 <template>
-  
-  <div id="app">
+	
+	<div id="app">
 
-    <nestedone message="This is message one..." :number="1"></nestedone>
-    <nestedone message="This is message two..."></nestedone>
-    <nestedone></nestedone>
+		<h1>{{AppMessage}}</h1>
 
-  </div>
+		<nestedone :message="AppMessage" @BubbleOne="AppMessage = $event"></nestedone>
+
+	</div>
 
 </template>
 
 <script>
 
-  import  nestedone from './components/NestedOne';
+	import  nestedone from './components/NestedOne';
 
-  export default {
-    name: 'app',
-    components: {
-      nestedone
-    }
-  }
+	export default {
+		name: 'app',
+		data() {
+			return {
+				AppMessage: "App Message Here!"
+			}
+		},
+		components: {
+			nestedone
+		}
+	}
 
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	#app {
+		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50;
+		margin-top: 60px;
+	}
 </style>
