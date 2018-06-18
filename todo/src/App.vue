@@ -2,9 +2,28 @@
 	
 	<div id="app">
 
-		<h1>{{name}}</h1>
+		<nav>
+			<router-link to="/">Todo</router-link>
+			<router-link :to="{
+				path: '/list/0/item/20',
+				query: {
+					isList: true,
+					isItem: false
+				}
+			}">Item</router-link>
 
-		<nestedone :message="name" @BubbleOne=" $store.dispatch( 'changeName', $event ) "></nestedone>
+			<button @click=" $router.replace({
+					path: '/list/0/item/20',
+					query: {
+						isList: true,
+						isItem: false
+					}
+				})">
+				Route Change
+			</button>
+		</nav>
+		
+		<router-view></router-view>
 
 	</div>
 
@@ -12,18 +31,9 @@
 
 <script>
 
-	import  nestedone from './components/NestedOne';
-
 	export default {
 		name: 'app',
-		computed: {
-			name(){
-				return this.$store.state.firstName + ' ' + this.$store.state.lastName;
-			}
-		},
-		components: {
-			nestedone
-		}
+		
 	}
 
 </script>

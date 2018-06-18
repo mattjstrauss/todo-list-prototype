@@ -28,12 +28,33 @@ const store = new Vuex.Store({
 	}
 })
 
+import VueRouter from 'vue-router'
+Vue.use( VueRouter);
+
+import Todo from './pages/Todo';
+import Item from './pages/Item';
+
+const router = new VueRouter({
+	routes: [
+		{
+			path: '/',
+			component: Todo
+		},
+		{
+			path: '/list/:listID/item/:itemID', 
+			component: Item, 
+			name: 'Item', 
+			props: true,
+		}
+	]
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   store,
-  components: { App },
-  template: '<App/>'
+  router,
+  render: h => h(App)
 })
