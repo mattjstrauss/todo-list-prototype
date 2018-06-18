@@ -1,15 +1,25 @@
 <template>
-	<h1>This is the (Todo page) player list</h1>
+
+	<section id="Main">
+		
+		<sidebar></sidebar>
+
+		<listview></listview>
+
+	</section>
+
 </template>
 
+
 <script>
-	
-	export default {
-		name: 'Todo'
+
+	import sidebar from '../components/Sidebar'
+	import listview from '../components/ListView'
+
+	export default
+	{
+		name: 'todo',
+		components: { sidebar, listview }
 	}
 
 </script>
-
-<style>
-	
-</style>

@@ -1,50 +1,41 @@
 <template>
-	
-	<div id="app">
+  <section id="app">
 
-		<nav>
-			<router-link to="/">Todo</router-link>
-			<router-link :to="{
-				path: '/list/0/item/20',
-				query: {
-					isList: true,
-					isItem: false
-				}
-			}">Item</router-link>
+    <router-view></router-view>
 
-			<button @click=" $router.replace({
-					path: '/list/0/item/20',
-					query: {
-						isList: true,
-						isItem: false
-					}
-				})">
-				Route Change
-			</button>
-		</nav>
-		
-		<router-view></router-view>
-
-	</div>
-
+  </section>
 </template>
+
+
+<style>
+
+  html, body
+  {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'helvetica';
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2em;
+    color: #333;
+  }
+
+  a
+  {
+    text-decoration: none;
+  }
+
+  *
+  {
+    box-sizing: border-box;
+  }
+</style>
+
 
 <script>
 
-	export default {
-		name: 'app',
-		
-	}
+  export default { name : 'App' }
 
 </script>
-
-<style>
-	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
-	}
-</style>
